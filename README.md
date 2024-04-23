@@ -1,3 +1,8 @@
+# Instrucciones de Instalacion y Ejecucion:
+- Instalar NPM en su version mas reciente.
+- Instalar dependencias por medio de 'npm run build'
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
