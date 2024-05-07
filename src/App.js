@@ -5,8 +5,10 @@ import Menu from './Components/Menu/Menu'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const goals = useSelector((state) => state.goals.value);
   return (
     <div className="App">
       <Menu></Menu>
@@ -17,9 +19,9 @@ function App() {
             <Formulario></Formulario>  
           </Col>
           <Col>
-            <Item></Item>
-            <Item></Item>
-            <Item></Item>
+            {goals.map((task, index)=>(
+              <Item name={task.name} description={task.description} dueDate={task.dueDate}></Item>
+            ))}
           </Col>
         </Row>
       </Container>      
