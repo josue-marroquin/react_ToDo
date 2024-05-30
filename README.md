@@ -1,3 +1,7 @@
+# Frontend Completo
+- Se conectó la App al Backend
+- Se agregó verificacion de estado option para agregar los datos a la tabla correcta. (Task/Goal)
+
 # Instrucciones de Instalacion y Ejecución:
 - Instalar NPM en su version mas reciente.
 - Instalar dependencias por medio de 'npm run build'

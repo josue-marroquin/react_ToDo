@@ -2,15 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const aKey = "12345";
 
-export const goalsSlice = createSlice({
-    name: 'goals',
-    initialState: { // Mapa del Estado Inicial / vaciado para visualizar con prioridad el del Backend
+export const tasksSlice = createSlice({
+    name: 'tasks',
+    initialState: { // Mapa del Estado Inicial
         value: []
     },
     reducers: { // Actions
-        addGoal: (state, action) => {
+        addTask: (state, action) => {
             state.value.push(action.payload)
-            fetch("http://localhost:3001/goals/addGoal", {
+            fetch("http://localhost:3001/tasks/addTask", {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",
@@ -22,12 +22,12 @@ export const goalsSlice = createSlice({
                 console.log(err);
             })
         },
-        initAddGoal: (state, action) => {
+        initAddTask: (state, action) => {
             state.value.push(action.payload)
         },
-        removeGoal: (state, action) => {
+        removeTask: (state, action) => {
             state.value = state.value.filter((task) => task.id !== action.payload)
-            fetch("http://localhost:3001/goals/removeGoal" + action.payload, {
+            fetch("http://localhost:3001/tasks/removeTask" + action.payload, {
                 method: "DELETE",
                 headers: {
                     "Content-Type":"application/json",
@@ -40,6 +40,6 @@ export const goalsSlice = createSlice({
     }
 })
 
-// Exportar las acciones para poderlas utilizar
-export const {addGoal, initAddGoal, removeGoal} = goalsSlice.actions;
-export default goalsSlice.reducer;
+export const { addTask, initAddTask, removeTask } = tasksSlice.actions;
+export const selectTasks = (state) => state.tasksSlice
+export default tasksSlice.reducer;
