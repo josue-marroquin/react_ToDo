@@ -1,4 +1,21 @@
-# Frontend Completo
+# Actividad 6 - Docker - Creacion de Contenedor
+
+# PASO 1 - Node.js
+- Agregar Imagen de Node: FROM node:20-alpine as builder
+- Agregar Carpeta en la que se va trabajar: WORKDIR /app
+- Copiar todos los archivos: COPY . .
+- Instalar Proyecto y sus dependencias: RUN npm install
+- Construir proyecto: RUN npm run build
+
+# PASO 2 - NGINX
+FROM nginx:1.19.0
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=builder /app/build .
+ENTRYPOINT [ "nginx", "-g", "deamon off;" ]
+
+
+# Frontend Completo - Actividad 5
 - Se conectó la App al Backend
 - Se agregó verificacion de estado option para agregar los datos a la tabla correcta. (Task/Goal)
 
